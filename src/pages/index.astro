@@ -1,87 +1,280 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
+import logoSvg from "../assets/fernstone-law-logo.svg?raw";
+
+const title = "Fernstone Law | Coming Soon";
+const description =
+  "Fernstone Law, formerly Proximo Legal Services. A new name, the same team, same regulated firm. Full site launching soon.";
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "LegalService",
-  "name": "Law Fern",
-  "description": "Clear, honest legal advice for individuals and small businesses.",
-  "url": "https://lawfern.co.uk",
+  "name": "Fernstone Law",
+  "alternateName": "Proximo Legal Services",
+  "description": description,
+  "email": "hello@fernstonelaw.co.uk",
   "areaServed": "GB",
-  "serviceType": ["Legal Advice", "Legal Services"],
 };
 ---
 
-<Layout
-  title="Law Fern — Clear Legal Advice"
-  description="Law Fern provides clear, honest legal advice for individuals and small businesses across the UK."
-  schema={schema}
->
-  <Nav />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
 
-  <main>
-    <!-- Hero -->
-    <section class="bg-[#f8f5f0] py-24 px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-5xl font-semibold leading-tight text-[#1a3a2a] mb-6">
-          Legal advice that's clear, honest, and on your side.
-        </h1>
-        <p class="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
-          Law Fern helps individuals and small businesses navigate legal challenges — without the jargon or the inflated fees.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/contact"
-            class="inline-block bg-[#3d7a56] text-white px-8 py-3.5 rounded-md font-medium hover:bg-[#1a3a2a] transition-colors"
-          >
-            Get in touch
-          </a>
-          <a
-            href="/services"
-            class="inline-block border border-[#3d7a56] text-[#3d7a56] px-8 py-3.5 rounded-md font-medium hover:bg-[#3d7a56] hover:text-white transition-colors"
-          >
-            Our services
-          </a>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="holding">
+      <div class="holding__wash" aria-hidden="true"></div>
+      <div class="holding__noise" aria-hidden="true"></div>
+
+      <div class="holding__content">
+        <header class="holding__header">
+          <div class="holding__logo" set:html={logoSvg} />
+          <p class="holding__rating">Rated 4.6 / 5 on Review Solicitors</p>
+        </header>
+
+        <div class="holding__hero">
+          <p class="holding__eyebrow">Formerly Proximo Legal Services</p>
+          <h1 class="holding__headline">
+            Straightforward<br />and effective<span class="holding__dot">.</span>
+          </h1>
         </div>
-      </div>
-    </section>
 
-    <!-- Why us -->
-    <section class="py-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-semibold text-[#1a3a2a] text-center mb-12">Why choose Law Fern?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {[
-            { title: "No jargon", body: "We explain everything in plain English, so you always understand where you stand." },
-            { title: "Transparent fees", body: "You'll know exactly what you're paying before any work begins — no surprises." },
-            { title: "Human first", body: "Every client speaks directly with a qualified solicitor, not a call centre." },
-          ].map(({ title, body }) => (
-            <div class="text-center">
-              <div class="w-12 h-12 bg-[#3d7a56]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-[#3d7a56] text-xl">✦</span>
-              </div>
-              <h3 class="text-lg font-semibold text-[#1a3a2a] mb-2">{title}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{body}</p>
+        <div class="holding__lower">
+          <p class="holding__intro">
+            Fernstone Law is the new name for Proximo Legal Services. The same Chester-based team,
+            built around clear advice, fair outcomes and modern client care. Personal Injury, Motor
+            Finance, handled properly.
+          </p>
+          <div class="holding__contact">
+            <div class="holding__contact-label">
+              <span>Enquiries</span>
+              <a href="mailto:hello@fernstonelaw.co.uk">hello@fernstonelaw.co.uk</a>
             </div>
-          ))}
+            <a class="holding__cta" href="mailto:hello@fernstonelaw.co.uk">Email our team</a>
+          </div>
         </div>
+
+        <footer class="holding__footer">
+          <span>&copy; 2026 Fernstone Law. All rights reserved.</span>
+          <span>Authorised and regulated by the Solicitors Regulation Authority (591916).</span>
+        </footer>
       </div>
-    </section>
+    </div>
 
-    <!-- CTA -->
-    <section class="bg-[#1a3a2a] text-white py-16 px-6 text-center">
-      <h2 class="text-3xl font-semibold mb-4">Ready to talk?</h2>
-      <p class="text-gray-300 mb-8 max-w-md mx-auto">Free initial consultation — no obligation, no pressure.</p>
-      <a
-        href="/contact"
-        class="inline-block bg-white text-[#1a3a2a] px-8 py-3.5 rounded-md font-medium hover:bg-[#f8f5f0] transition-colors"
-      >
-        Book a free consultation
-      </a>
-    </section>
-  </main>
+    <style>
+      :global(html),
+      :global(body) {
+        margin: 0;
+        padding: 0;
+      }
 
-  <Footer />
-</Layout>
+      :global(body) {
+        font-family: "DM Sans", system-ui, sans-serif;
+      }
+
+      .holding {
+        position: relative;
+        min-height: 100vh;
+        background: #36655b;
+        color: #eff3f6;
+        overflow: hidden;
+      }
+
+      .holding__wash {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse 80% 70% at 30% 110%, rgba(255, 255, 255, 0.16) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 80% -10%, rgba(0, 0, 0, 0.22) 0%, transparent 50%);
+      }
+
+      .holding__noise {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 200px 200px;
+      }
+
+      .holding__content {
+        position: relative;
+        min-height: 100vh;
+        box-sizing: border-box;
+        padding: 50px 64px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .holding__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .holding__logo {
+        width: 128px;
+        color: #eff3f6;
+      }
+
+      .holding__logo :global(svg) {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .holding__rating {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(239, 243, 246, 0.72);
+        letter-spacing: 0.02em;
+      }
+
+      .holding__hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .holding__eyebrow {
+        margin: 0 0 8px;
+        font-size: 12.5px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(239, 243, 246, 0.68);
+      }
+
+      .holding__headline {
+        font-family: "EB Garamond", serif;
+        font-weight: 400;
+        font-size: clamp(48px, 8vw, 118px);
+        line-height: 0.98;
+        letter-spacing: -0.025em;
+        margin: 0;
+        color: #eff3f6;
+      }
+
+      .holding__dot {
+        color: #ba5e49;
+      }
+
+      .holding__lower {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 56px;
+        align-items: end;
+        padding-bottom: 24px;
+      }
+
+      .holding__intro {
+        font-size: 18px;
+        line-height: 1.6;
+        color: rgba(239, 243, 246, 0.86);
+        margin: 0;
+        max-width: 560px;
+      }
+
+      .holding__contact {
+        justify-self: end;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 14px;
+      }
+
+      .holding__contact-label {
+        line-height: 1.45;
+      }
+
+      .holding__contact-label span {
+        display: block;
+        font-size: 11.5px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(239, 243, 246, 0.6);
+      }
+
+      .holding__contact-label a {
+        font-size: 16px;
+        color: #eff3f6;
+        text-decoration: none;
+      }
+
+      .holding__cta {
+        display: inline-block;
+        padding: 14px 28px;
+        background: #ba5e49;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.15s ease;
+      }
+
+      .holding__cta:hover {
+        background: #a5543f;
+      }
+
+      .holding__footer {
+        border-top: 1px solid rgba(239, 243, 246, 0.16);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: rgba(239, 243, 246, 0.62);
+        line-height: 1.5;
+      }
+
+      @media (max-width: 720px) {
+        .holding__content {
+          padding: 32px 24px;
+        }
+
+        .holding__header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .holding__lower {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .holding__contact {
+          justify-self: start;
+          text-align: left;
+          align-items: flex-start;
+        }
+
+        .holding__footer {
+          flex-direction: column;
+          gap: 6px;
+        }
+      }
+    </style>
+  </body>
+</html>
