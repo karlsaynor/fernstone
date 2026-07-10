@@ -98,11 +98,21 @@ const schema = {
 
       .holding__wash {
         position: absolute;
-        inset: 0;
+        inset: -10%;
         pointer-events: none;
         background:
           radial-gradient(ellipse 80% 70% at 30% 110%, rgba(255, 255, 255, 0.16) 0%, transparent 60%),
           radial-gradient(ellipse 60% 50% at 80% -10%, rgba(0, 0, 0, 0.22) 0%, transparent 50%);
+        animation: wash-drift 22s ease-in-out infinite alternate;
+      }
+
+      @keyframes wash-drift {
+        0% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+          transform: translate3d(1.5%, -1.5%, 0) scale(1.03);
+        }
       }
 
       .holding__noise {
@@ -123,10 +133,41 @@ const schema = {
         flex-direction: column;
       }
 
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .holding__header,
+      .holding__hero,
+      .holding__lower,
+      .holding__footer {
+        animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
       .holding__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        animation-delay: 0s;
+      }
+
+      .holding__hero {
+        animation-delay: 0.1s;
+      }
+
+      .holding__lower {
+        animation-delay: 0.22s;
+      }
+
+      .holding__footer {
+        animation-delay: 0.32s;
       }
 
       .holding__logo {
@@ -216,9 +257,19 @@ const schema = {
       }
 
       .holding__contact-label a {
+        position: relative;
         font-size: 16px;
         color: #eff3f6;
         text-decoration: none;
+        background-image: linear-gradient(rgba(239, 243, 246, 0.6), rgba(239, 243, 246, 0.6));
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 0% 1px;
+        transition: background-size 0.25s ease;
+      }
+
+      .holding__contact-label a:hover {
+        background-size: 100% 1px;
       }
 
       .holding__cta {
@@ -231,11 +282,18 @@ const schema = {
         letter-spacing: 0.02em;
         color: #fff;
         text-decoration: none;
-        transition: background-color 0.15s ease;
+        transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .holding__cta:hover {
         background: #a5543f;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+      }
+
+      .holding__cta:active {
+        transform: translateY(0);
+        box-shadow: none;
       }
 
       .holding__footer {
@@ -273,6 +331,21 @@ const schema = {
         .holding__footer {
           flex-direction: column;
           gap: 6px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .holding__wash,
+        .holding__header,
+        .holding__hero,
+        .holding__lower,
+        .holding__footer {
+          animation: none;
+        }
+
+        .holding__cta,
+        .holding__contact-label a {
+          transition: none;
         }
       }
     </style>
