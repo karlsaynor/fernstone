@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Law Fern",
+  "description": "Clear, honest legal advice for individuals and small businesses.",
+  "url": "https://lawfern.co.uk",
+  "areaServed": "GB",
+  "serviceType": ["Legal Advice", "Legal Services"],
+};
+---
+
+<Layout
+  title="Law Fern — Clear Legal Advice"
+  description="Law Fern provides clear, honest legal advice for individuals and small businesses across the UK."
+  schema={schema}
+>
+  <Nav />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-[#f8f5f0] py-24 px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-5xl font-semibold leading-tight text-[#1a3a2a] mb-6">
+          Legal advice that's clear, honest, and on your side.
+        </h1>
+        <p class="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
+          Law Fern helps individuals and small businesses navigate legal challenges — without the jargon or the inflated fees.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-block bg-[#3d7a56] text-white px-8 py-3.5 rounded-md font-medium hover:bg-[#1a3a2a] transition-colors"
+          >
+            Get in touch
+          </a>
+          <a
+            href="/services"
+            class="inline-block border border-[#3d7a56] text-[#3d7a56] px-8 py-3.5 rounded-md font-medium hover:bg-[#3d7a56] hover:text-white transition-colors"
+          >
+            Our services
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why us -->
+    <section class="py-20 px-6">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-semibold text-[#1a3a2a] text-center mb-12">Why choose Law Fern?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {[
+            { title: "No jargon", body: "We explain everything in plain English, so you always understand where you stand." },
+            { title: "Transparent fees", body: "You'll know exactly what you're paying before any work begins — no surprises." },
+            { title: "Human first", body: "Every client speaks directly with a qualified solicitor, not a call centre." },
+          ].map(({ title, body }) => (
+            <div class="text-center">
+              <div class="w-12 h-12 bg-[#3d7a56]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-[#3d7a56] text-xl">✦</span>
+              </div>
+              <h3 class="text-lg font-semibold text-[#1a3a2a] mb-2">{title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-[#1a3a2a] text-white py-16 px-6 text-center">
+      <h2 class="text-3xl font-semibold mb-4">Ready to talk?</h2>
+      <p class="text-gray-300 mb-8 max-w-md mx-auto">Free initial consultation — no obligation, no pressure.</p>
+      <a
+        href="/contact"
+        class="inline-block bg-white text-[#1a3a2a] px-8 py-3.5 rounded-md font-medium hover:bg-[#f8f5f0] transition-colors"
+      >
+        Book a free consultation
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

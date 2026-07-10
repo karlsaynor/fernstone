@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+  {
+    name: "Contract Review",
+    description: "We review, draft, and negotiate contracts so you sign with confidence — employment, supplier, client, and commercial agreements.",
+  },
+  {
+    name: "Dispute Resolution",
+    description: "From neighbour disputes to business disagreements, we'll advise on your options and represent you where needed.",
+  },
+  {
+    name: "Consumer Rights",
+    description: "Whether it's a faulty product, a rogue trader, or a mis-sold financial product, we'll help you understand and exercise your rights.",
+  },
+  {
+    name: "Small Business Legal",
+    description: "Legal foundations for growing businesses: terms and conditions, partnership agreements, employment contracts, and regulatory compliance.",
+  },
+  {
+    name: "Wills & Estate Planning",
+    description: "Plan for the future with a properly drafted will, Lasting Power of Attorney, or estate administration support.",
+  },
+  {
+    name: "Property Matters",
+    description: "Advice on landlord and tenant disputes, property transactions, boundary issues, and leasehold matters.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Law Fern",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Legal Services",
+    "itemListElement": services.map((s, i) => ({
+      "@type": "Offer",
+      "position": i + 1,
+      "name": s.name,
+      "description": s.description,
+    })),
+  },
+};
+---
+
+<Layout
+  title="Services — Law Fern"
+  description="Law Fern offers contract review, dispute resolution, consumer rights advice, small business legal, wills, and property matters."
+  schema={schema}
+>
+  <Nav />
+
+  <main class="max-w-5xl mx-auto px-6 py-20">
+    <h1 class="text-4xl font-semibold text-[#1a3a2a] mb-4">Our services</h1>
+    <p class="text-lg text-gray-600 mb-14 max-w-2xl">
+      We cover a broad range of legal matters — always with the same straightforward approach.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {services.map(({ name, description }) => (
+        <div class="p-6 border border-gray-200 rounded-lg hover:border-[#3d7a56] transition-colors">
+          <h2 class="text-lg font-semibold text-[#1a3a2a] mb-2">{name}</h2>
+          <p class="text-gray-600 text-sm leading-relaxed">{description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-gray-600 mb-6">Not sure if we cover what you need? Just ask.</p>
+      <a
+        href="/contact"
+        class="inline-block bg-[#3d7a56] text-white px-8 py-3.5 rounded-md font-medium hover:bg-[#1a3a2a] transition-colors"
+      >
+        Get in touch
+      </a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
