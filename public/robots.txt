@@ -1,0 +1,31 @@
+# Default: allow everything
+User-agent: *
+Allow: /
+
+# AI search / citation bots — explicitly allowed
+# (these power live answers in ChatGPT, Claude, Perplexity; distinct from the
+# training-only crawlers below)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI training-only crawlers — policy pending, see project notes.
+# Currently left to the default "Allow: /" above; revisit once a firm
+# decision is made on whether Fernstone Law content should feed model training.
+# User-agent: GPTBot
+# User-agent: ClaudeBot
+# User-agent: Google-Extended
+# User-agent: CCBot
+
+Sitemap: https://fernstonelaw.co.uk/sitemap-index.xml
