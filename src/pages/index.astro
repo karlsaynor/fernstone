@@ -16,6 +16,7 @@ const schema = {
   "url": canonicalURL.toString(),
   "email": "hello@fernstonelaw.co.uk",
   "areaServed": "GB",
+  "knowsAbout": ["Personal Injury", "Motor Finance", "Other Claims"],
   "identifier": {
     "@type": "PropertyValue",
     "name": "SRA Number",
@@ -67,11 +68,17 @@ const schema = {
         </div>
 
         <div class="holding__lower">
-          <p class="holding__intro">
-            Fernstone Law is the new name for Proximo Legal Services. The same Chester-based team,
-            built around clear advice, fair outcomes and modern client care. Personal Injury, Motor
-            Finance, handled properly.
-          </p>
+          <div class="holding__intro-block">
+            <p class="holding__intro">
+              Fernstone Law is the new name for Proximo Legal Services. The same Chester-based team,
+              built around clear advice, fair outcomes and modern client care.
+            </p>
+            <ul class="holding__chips">
+              <li class="holding__chip">Personal Injury</li>
+              <li class="holding__chip">Motor Finance</li>
+              <li class="holding__chip">Other Claims</li>
+            </ul>
+          </div>
           <div class="holding__contact">
             <div class="holding__contact-label">
               <span>Enquiries</span>
@@ -237,12 +244,35 @@ const schema = {
         padding-bottom: 24px;
       }
 
+      .holding__intro-block {
+        max-width: 560px;
+      }
+
       .holding__intro {
         font-size: 18px;
         line-height: 1.6;
         color: rgba(239, 243, 246, 0.86);
         margin: 0;
-        max-width: 560px;
+      }
+
+      .holding__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .holding__chip {
+        padding: 6px 14px;
+        background: rgba(0, 0, 0, 0.16);
+        border: 1px solid rgba(239, 243, 246, 0.14);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: rgba(239, 243, 246, 0.82);
       }
 
       .holding__contact {
