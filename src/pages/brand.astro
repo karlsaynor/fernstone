@@ -1,0 +1,412 @@
+---
+import logoSvg from "../assets/fernstone-law-logo.svg?raw";
+
+const swatches = [
+  { name: "Ink", role: "Body text on light backgrounds", hex: "#162029" },
+  { name: "Brand green", role: "Primary brand colour — hero bands, panels", hex: "#36655B" },
+  { name: "Darker green", role: "Canvas / depth colour, top bars", hex: "#1F3B34" },
+  { name: "Surface", role: "Muted backgrounds, supporting panels", hex: "#C9D7C6" },
+  { name: "Highlight", role: "Meta text, labels, captions", hex: "#5C6F66" },
+  { name: "Light", role: "Page background; cream text on dark", hex: "#EFF3F6" },
+  { name: "Coral", role: "CTAs and accents only — used sparingly", hex: "#BA5E49" },
+];
+
+const copyRules = [
+  "“solicitors”, not “lawyers”",
+  "The word “honest” is forbidden",
+  "Standard hyphens only — no en or em dashes",
+  "Sentence case for headings",
+  "Body copy is never smaller than 16px",
+  "Avoid definitive, certainty-implying claims",
+];
+
+const contact = [
+  { label: "Phone", value: "0844 891 0288" },
+  { label: "Email", value: "info@fernstonelaw.co.uk" },
+  { label: "Address", value: "Beech House, Park West Business Park, Sealand Road, CH1 4RJ" },
+  { label: "SRA number", value: "591916" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Fernstone Law — Brand Reference</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="page__header">
+        <div class="page__logo" set:html={logoSvg} />
+        <div class="page__header-text">
+          <h1>Brand reference</h1>
+          <p>Internal reference only &mdash; not linked or indexed. Reflects the site as built.</p>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>Colour</h2>
+        <div class="swatches">
+          {swatches.map((s) => (
+            <div class="swatch">
+              <div class="swatch__block" style={`background:${s.hex};`}></div>
+              <div class="swatch__meta">
+                <p class="swatch__name">{s.name}</p>
+                <p class="swatch__hex">{s.hex}</p>
+                <p class="swatch__role">{s.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="note">
+          Depth on green panels comes from alpha-blended black/white radial gradients plus a 6% SVG noise
+          overlay, not a second flat colour. Coral is restricted to CTAs and accents (the headline full
+          stop is an approved deliberate exception).
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Typography</h2>
+        <div class="type-specimen">
+          <p class="type-specimen__label">Display / headlines &mdash; EB Garamond, weight 400</p>
+          <p class="type-specimen__example type-specimen__example--serif">Straightforward and effective<span class="dot">.</span></p>
+        </div>
+        <div class="type-specimen">
+          <p class="type-specimen__label">Body / UI &mdash; DM Sans, weights 400&ndash;700</p>
+          <p class="type-specimen__example">The quick brown fox jumps over the lazy dog. 0123456789</p>
+        </div>
+        <p class="note">Google Fonts, loaded via preconnect + stylesheet link. Fallbacks: Georgia (serif), Arial (sans).</p>
+      </section>
+
+      <section class="section">
+        <h2>Logo</h2>
+        <div class="logo-demo">
+          <div class="logo-demo__panel logo-demo__panel--light">
+            <div class="logo-demo__mark logo-demo__mark--ink" set:html={logoSvg} />
+            <p>Ink colourway, on light backgrounds</p>
+          </div>
+          <div class="logo-demo__panel logo-demo__panel--dark">
+            <div class="logo-demo__mark logo-demo__mark--cream" set:html={logoSvg} />
+            <p>Cream colourway, on brand-green backgrounds</p>
+          </div>
+        </div>
+        <p class="note">
+          Source: <code>src/assets/fernstone-law-logo.svg</code> (single-colour, <code>currentColor</code>).
+          Rasterised PNGs for email at <code>/email-assets/fernstone-law-logo.png</code> (ink) and
+          <code>fernstone-law-logo-cream.png</code> (cream).
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>UI motifs</h2>
+        <ul class="motif-list">
+          <li><strong>Radius</strong> &mdash; 6px on buttons, cards, and pills throughout.</li>
+          <li><strong>Coral full stop</strong> &mdash; the period at the end of a serif headline is coral; everything else in the headline is cream/ink.</li>
+          <li><strong>Pill chips</strong> &mdash; coverage areas / tags rendered as small rounded pills, subtle darker fill on green.</li>
+          <li><strong>Motion</strong> &mdash; CSS-only: staggered fade-up on load, slow ambient background drift, hover lift on buttons, underline sweep on text links. Everything respects <code>prefers-reduced-motion</code>.</li>
+          <li><strong>No decorative accent stripes</strong> &mdash; depth comes from gradient/noise overlays and whitespace, not colour bars.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Voice &amp; copy rules</h2>
+        <ul class="rules-list">
+          {copyRules.map((rule) => <li>{rule}</li>)}
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Regulatory &amp; contact</h2>
+        <dl class="contact-list">
+          {contact.map((c) => (
+            <>
+              <dt>{c.label}</dt>
+              <dd>{c.value}</dd>
+            </>
+          ))}
+        </dl>
+      </section>
+    </div>
+
+    <style>
+      :global(html),
+      :global(body) {
+        margin: 0;
+        padding: 0;
+      }
+
+      :global(body) {
+        font-family: "DM Sans", Arial, sans-serif;
+        background: #eff3f6;
+        color: #162029;
+      }
+
+      .page {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 56px 24px 96px;
+      }
+
+      .page__header {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 56px;
+      }
+
+      .page__logo {
+        width: 96px;
+        flex-shrink: 0;
+        color: #36655b;
+      }
+
+      .page__logo :global(svg) {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .page__header-text h1 {
+        font-family: "EB Garamond", Georgia, serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 0 0 8px;
+        color: #162029;
+      }
+
+      .page__header-text p {
+        margin: 0;
+        font-size: 14px;
+        color: #5c6f66;
+      }
+
+      .section {
+        margin-bottom: 56px;
+      }
+
+      .section h2 {
+        font-family: "EB Garamond", Georgia, serif;
+        font-weight: 400;
+        font-size: 26px;
+        margin: 0 0 20px;
+        color: #162029;
+      }
+
+      .note {
+        margin: 20px 0 0;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #5c6f66;
+        max-width: 640px;
+      }
+
+      .note code {
+        background: #c9d7c6;
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .swatch {
+        background: #ffffff;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .swatch__block {
+        height: 80px;
+      }
+
+      .swatch__meta {
+        padding: 12px 14px;
+      }
+
+      .swatch__name {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .swatch__hex {
+        margin: 2px 0 6px;
+        font-size: 12px;
+        color: #5c6f66;
+        font-family: monospace;
+      }
+
+      .swatch__role {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #5c6f66;
+      }
+
+      .type-specimen {
+        background: #ffffff;
+        border-radius: 6px;
+        padding: 24px;
+        margin-bottom: 16px;
+      }
+
+      .type-specimen__label {
+        margin: 0 0 12px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #5c6f66;
+      }
+
+      .type-specimen__example {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.4;
+      }
+
+      .type-specimen__example--serif {
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: 34px;
+      }
+
+      .dot {
+        color: #ba5e49;
+      }
+
+      .logo-demo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .logo-demo__panel {
+        border-radius: 6px;
+        padding: 32px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .logo-demo__panel--light {
+        background: #ffffff;
+      }
+
+      .logo-demo__panel--dark {
+        background: #36655b;
+      }
+
+      .logo-demo__panel p {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .logo-demo__panel--light p {
+        color: #5c6f66;
+      }
+
+      .logo-demo__panel--dark p {
+        color: rgba(239, 243, 246, 0.72);
+      }
+
+      .logo-demo__mark {
+        width: 140px;
+      }
+
+      .logo-demo__mark :global(svg) {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .logo-demo__mark--ink {
+        color: #162029;
+      }
+
+      .logo-demo__mark--cream {
+        color: #eff3f6;
+      }
+
+      .motif-list,
+      .rules-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .motif-list li,
+      .rules-list li {
+        background: #ffffff;
+        border-radius: 6px;
+        padding: 14px 18px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .motif-list code {
+        background: #c9d7c6;
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .contact-list {
+        background: #ffffff;
+        border-radius: 6px;
+        padding: 24px;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 12px 16px;
+      }
+
+      .contact-list dt {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #5c6f66;
+      }
+
+      .contact-list dd {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        .page__header {
+          flex-direction: column;
+        }
+
+        .logo-demo {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-list {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-list dt {
+          margin-top: 8px;
+        }
+      }
+    </style>
+  </body>
+</html>
