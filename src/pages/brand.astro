@@ -3,18 +3,18 @@ import logoSvg from "../assets/fernstone-law-logo.svg?raw";
 
 const swatches = [
   { name: "Ink", role: "Body text on light backgrounds", hex: "#162029" },
-  { name: "Brand green", role: "Primary brand colour — hero bands, panels", hex: "#36655B" },
-  { name: "Darker green", role: "Canvas / depth colour, top bars", hex: "#1F3B34" },
-  { name: "Surface", role: "Muted backgrounds, supporting panels", hex: "#C9D7C6" },
-  { name: "Highlight", role: "Meta text, labels, captions", hex: "#5C6F66" },
+  { name: "Brand green", role: "Primary brand colour, used for hero bands and panels", hex: "#36655B" },
+  { name: "Darker green", role: "Canvas and depth colour, used for top bars", hex: "#1F3B34" },
+  { name: "Surface", role: "Muted backgrounds and supporting panels", hex: "#C9D7C6" },
+  { name: "Highlight", role: "Meta text, labels and captions", hex: "#5C6F66" },
   { name: "Light", role: "Page background; cream text on dark", hex: "#EFF3F6" },
-  { name: "Coral", role: "CTAs and accents only — used sparingly", hex: "#BA5E49" },
+  { name: "Coral", role: "CTAs and accents only, used sparingly", hex: "#BA5E49" },
 ];
 
 const copyRules = [
   "“solicitors”, not “lawyers”",
   "The word “honest” is forbidden",
-  "Standard hyphens only — no en or em dashes",
+  "Standard hyphens only, no en or em dashes",
   "Sentence case for headings",
   "Body copy is never smaller than 16px",
   "Avoid definitive, certainty-implying claims",
@@ -34,7 +34,7 @@ const contact = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Fernstone Law — Brand Reference</title>
+    <title>Fernstone Law | Brand Reference</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,10 +46,10 @@ const contact = [
   <body>
     <div class="page">
       <header class="page__header">
-        <div class="page__logo" set:html={logoSvg} />
+        <div class="page__logo page__logo--ink" set:html={logoSvg} />
         <div class="page__header-text">
-          <h1>Brand reference</h1>
-          <p>Internal reference only &mdash; not linked or indexed. Reflects the site as built.</p>
+          <h1>Brand reference<span class="dot">.</span></h1>
+          <p>Internal reference only. Not linked or indexed. Reflects the site as built.</p>
         </div>
       </header>
 
@@ -77,11 +77,11 @@ const contact = [
       <section class="section">
         <h2>Typography</h2>
         <div class="type-specimen">
-          <p class="type-specimen__label">Display / headlines &mdash; EB Garamond, weight 400</p>
+          <p class="type-specimen__label">Display / headlines: EB Garamond, weight 400</p>
           <p class="type-specimen__example type-specimen__example--serif">Straightforward and effective<span class="dot">.</span></p>
         </div>
         <div class="type-specimen">
-          <p class="type-specimen__label">Body / UI &mdash; DM Sans, weights 400&ndash;700</p>
+          <p class="type-specimen__label">Body / UI: DM Sans, weights 400 to 700</p>
           <p class="type-specimen__example">The quick brown fox jumps over the lazy dog. 0123456789</p>
         </div>
         <p class="note">Google Fonts, loaded via preconnect + stylesheet link. Fallbacks: Georgia (serif), Arial (sans).</p>
@@ -109,11 +109,11 @@ const contact = [
       <section class="section">
         <h2>UI motifs</h2>
         <ul class="motif-list">
-          <li><strong>Radius</strong> &mdash; 6px on buttons, cards, and pills throughout.</li>
-          <li><strong>Coral full stop</strong> &mdash; the period at the end of a serif headline is coral; everything else in the headline is cream/ink.</li>
-          <li><strong>Pill chips</strong> &mdash; coverage areas / tags rendered as small rounded pills, subtle darker fill on green.</li>
-          <li><strong>Motion</strong> &mdash; CSS-only: staggered fade-up on load, slow ambient background drift, hover lift on buttons, underline sweep on text links. Everything respects <code>prefers-reduced-motion</code>.</li>
-          <li><strong>No decorative accent stripes</strong> &mdash; depth comes from gradient/noise overlays and whitespace, not colour bars.</li>
+          <li><strong>Radius:</strong> 6px on buttons, cards, and pills throughout.</li>
+          <li><strong>Coral full stop:</strong> the period at the end of a serif headline is coral; everything else in the headline is cream or ink.</li>
+          <li><strong>Pill chips:</strong> coverage areas and tags rendered as small rounded pills, subtle darker fill on green.</li>
+          <li><strong>Motion:</strong> CSS-only, staggered fade-up on load, slow ambient background drift, hover lift on buttons, underline sweep on text links. Everything respects <code>prefers-reduced-motion</code>.</li>
+          <li><strong>No decorative accent stripes:</strong> depth comes from gradient and noise overlays and whitespace, not colour bars.</li>
         </ul>
       </section>
 
@@ -158,15 +158,18 @@ const contact = [
 
       .page__header {
         display: flex;
+        flex-direction: column;
         align-items: flex-start;
         gap: 24px;
         margin-bottom: 56px;
       }
 
       .page__logo {
-        width: 96px;
-        flex-shrink: 0;
-        color: #36655b;
+        width: 220px;
+      }
+
+      .page__logo--ink {
+        color: #162029;
       }
 
       .page__logo :global(svg) {
@@ -185,7 +188,7 @@ const contact = [
 
       .page__header-text p {
         margin: 0;
-        font-size: 14px;
+        font-size: 16px;
         color: #5c6f66;
       }
 
@@ -203,7 +206,7 @@ const contact = [
 
       .note {
         margin: 20px 0 0;
-        font-size: 13px;
+        font-size: 16px;
         line-height: 1.6;
         color: #5c6f66;
         max-width: 640px;
@@ -238,7 +241,7 @@ const contact = [
 
       .swatch__name {
         margin: 0;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 600;
       }
 
@@ -251,7 +254,7 @@ const contact = [
 
       .swatch__role {
         margin: 0;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 1.4;
         color: #5c6f66;
       }
@@ -312,7 +315,7 @@ const contact = [
 
       .logo-demo__panel p {
         margin: 0;
-        font-size: 13px;
+        font-size: 16px;
       }
 
       .logo-demo__panel--light p {
@@ -356,7 +359,7 @@ const contact = [
         background: #ffffff;
         border-radius: 6px;
         padding: 14px 18px;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 1.6;
       }
 
@@ -387,7 +390,7 @@ const contact = [
 
       .contact-list dd {
         margin: 0;
-        font-size: 14px;
+        font-size: 16px;
       }
 
       @media (max-width: 640px) {
