@@ -55,12 +55,14 @@ const contact = [
       <div class="hero__noise" aria-hidden="true"></div>
       <div class="hero__inner">
         <div class="hero__logo" set:html={logoLightSvg} />
-        <h1>Brand reference<span class="dot">.</span></h1>
-        <p>Internal reference only. Not linked or indexed. Reflects the site as built.</p>
       </div>
     </header>
 
     <div class="page">
+      <div class="page__intro">
+        <h1>Brand reference<span class="dot">.</span></h1>
+        <p>Internal reference only. Not linked or indexed. Reflects the site as built.</p>
+      </div>
 
       <section class="section">
         <h2>Colour</h2>
@@ -169,7 +171,7 @@ const contact = [
         position: relative;
         background: #36655b;
         overflow: hidden;
-        padding: 80px 24px;
+        padding: 56px 24px;
       }
 
       .hero__wash {
@@ -198,8 +200,7 @@ const contact = [
       }
 
       .hero__logo {
-        width: 260px;
-        margin-bottom: 32px;
+        width: 180px;
         color: #eff3f6;
       }
 
@@ -209,19 +210,23 @@ const contact = [
         display: block;
       }
 
-      .hero__inner h1 {
-        font-family: "EB Garamond", Georgia, serif;
-        font-weight: 400;
-        font-size: 48px;
-        margin: 0 0 12px;
-        color: #eff3f6;
+      .page__intro {
+        margin-bottom: 48px;
       }
 
-      .hero__inner p {
+      .page__intro h1 {
+        font-family: "EB Garamond", Georgia, serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 0 0 10px;
+        color: #162029;
+      }
+
+      .page__intro p {
         margin: 0;
-        font-size: 18px;
-        color: rgba(239, 243, 246, 0.82);
-        max-width: 520px;
+        font-size: 17px;
+        color: #5c6f66;
+        white-space: nowrap;
       }
 
       .section {
@@ -464,15 +469,19 @@ const contact = [
 
       @media (max-width: 640px) {
         .hero {
-          padding: 56px 24px;
+          padding: 40px 24px;
         }
 
         .hero__logo {
-          width: 180px;
+          width: 140px;
         }
 
-        .hero__inner h1 {
-          font-size: 34px;
+        .page__intro h1 {
+          font-size: 32px;
+        }
+
+        .page__intro p {
+          white-space: normal;
         }
 
         .logo-demo {
