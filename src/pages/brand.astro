@@ -1,5 +1,6 @@
 ---
 import logoSvg from "../assets/fernstone-law-logo.svg?raw";
+import logoLightSvg from "../assets/fernstone-law-logo-light.svg?raw";
 
 const swatches = [
   { name: "Ink", role: "Body text on light backgrounds", hex: "#162029" },
@@ -36,6 +37,11 @@ const contact = [
     <meta name="robots" content="noindex, nofollow" />
     <title>Fernstone Law | Brand Reference</title>
 
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,14 +50,17 @@ const contact = [
     />
   </head>
   <body>
+    <header class="hero">
+      <div class="hero__wash" aria-hidden="true"></div>
+      <div class="hero__noise" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__logo" set:html={logoLightSvg} />
+        <h1>Brand reference<span class="dot">.</span></h1>
+        <p>Internal reference only. Not linked or indexed. Reflects the site as built.</p>
+      </div>
+    </header>
+
     <div class="page">
-      <header class="page__header">
-        <div class="page__logo page__logo--ink" set:html={logoSvg} />
-        <div class="page__header-text">
-          <h1>Brand reference<span class="dot">.</span></h1>
-          <p>Internal reference only. Not linked or indexed. Reflects the site as built.</p>
-        </div>
-      </header>
 
       <section class="section">
         <h2>Colour</h2>
@@ -156,40 +165,63 @@ const contact = [
         padding: 56px 24px 96px;
       }
 
-      .page__header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-        margin-bottom: 56px;
+      .hero {
+        position: relative;
+        background: #36655b;
+        overflow: hidden;
+        padding: 80px 24px;
       }
 
-      .page__logo {
-        width: 220px;
+      .hero__wash {
+        position: absolute;
+        inset: -10%;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse 80% 70% at 30% 110%, rgba(255, 255, 255, 0.16) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 80% -10%, rgba(0, 0, 0, 0.22) 0%, transparent 50%);
       }
 
-      .page__logo--ink {
-        color: #162029;
+      .hero__noise {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 200px 200px;
       }
 
-      .page__logo :global(svg) {
+      .hero__inner {
+        position: relative;
+        z-index: 2;
+        max-width: 880px;
+        margin: 0 auto;
+      }
+
+      .hero__logo {
+        width: 260px;
+        margin-bottom: 32px;
+        color: #eff3f6;
+      }
+
+      .hero__logo :global(svg) {
         width: 100%;
         height: auto;
         display: block;
       }
 
-      .page__header-text h1 {
+      .hero__inner h1 {
         font-family: "EB Garamond", Georgia, serif;
         font-weight: 400;
-        font-size: 40px;
-        margin: 0 0 8px;
-        color: #162029;
+        font-size: 48px;
+        margin: 0 0 12px;
+        color: #eff3f6;
       }
 
-      .page__header-text p {
+      .hero__inner p {
         margin: 0;
-        font-size: 16px;
-        color: #5c6f66;
+        font-size: 18px;
+        color: rgba(239, 243, 246, 0.82);
+        max-width: 520px;
       }
 
       .section {
@@ -229,6 +261,8 @@ const contact = [
         background: #ffffff;
         border-radius: 6px;
         overflow: hidden;
+        border: 1px solid rgba(92, 111, 102, 0.15);
+        box-shadow: 0 1px 2px rgba(22, 32, 41, 0.06), 0 1px 1px rgba(22, 32, 41, 0.04);
       }
 
       .swatch__block {
@@ -264,6 +298,8 @@ const contact = [
         border-radius: 6px;
         padding: 24px;
         margin-bottom: 16px;
+        border: 1px solid rgba(92, 111, 102, 0.15);
+        box-shadow: 0 1px 2px rgba(22, 32, 41, 0.06), 0 1px 1px rgba(22, 32, 41, 0.04);
       }
 
       .type-specimen__label {
@@ -297,20 +333,49 @@ const contact = [
       }
 
       .logo-demo__panel {
+        position: relative;
         border-radius: 6px;
         padding: 32px 24px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+        overflow: hidden;
+      }
+
+      .logo-demo__panel > * {
+        position: relative;
+        z-index: 2;
       }
 
       .logo-demo__panel--light {
         background: #ffffff;
+        border: 1px solid rgba(92, 111, 102, 0.15);
+        box-shadow: 0 1px 2px rgba(22, 32, 41, 0.06), 0 1px 1px rgba(22, 32, 41, 0.04);
       }
 
       .logo-demo__panel--dark {
         background: #36655b;
+      }
+
+      .logo-demo__panel--dark::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse 80% 70% at 30% 110%, rgba(255, 255, 255, 0.16) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 80% -10%, rgba(0, 0, 0, 0.22) 0%, transparent 50%);
+      }
+
+      .logo-demo__panel--dark::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 200px 200px;
       }
 
       .logo-demo__panel p {
@@ -361,6 +426,8 @@ const contact = [
         padding: 14px 18px;
         font-size: 16px;
         line-height: 1.6;
+        border: 1px solid rgba(92, 111, 102, 0.15);
+        box-shadow: 0 1px 2px rgba(22, 32, 41, 0.06), 0 1px 1px rgba(22, 32, 41, 0.04);
       }
 
       .motif-list code {
@@ -378,6 +445,8 @@ const contact = [
         display: grid;
         grid-template-columns: 140px 1fr;
         gap: 12px 16px;
+        border: 1px solid rgba(92, 111, 102, 0.15);
+        box-shadow: 0 1px 2px rgba(22, 32, 41, 0.06), 0 1px 1px rgba(22, 32, 41, 0.04);
       }
 
       .contact-list dt {
@@ -394,8 +463,16 @@ const contact = [
       }
 
       @media (max-width: 640px) {
-        .page__header {
-          flex-direction: column;
+        .hero {
+          padding: 56px 24px;
+        }
+
+        .hero__logo {
+          width: 180px;
+        }
+
+        .hero__inner h1 {
+          font-size: 34px;
         }
 
         .logo-demo {
