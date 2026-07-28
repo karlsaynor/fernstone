@@ -10,12 +10,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const schema = {
   "@context": "https://schema.org",
   "@type": "LegalService",
+  "@id": "https://fernstonelaw.co.uk/#organization",
   "name": "Fernstone Law",
   "alternateName": "Proximo Legal Services",
   "description": description,
   "url": canonicalURL.toString(),
+  "logo": "https://fernstonelaw.co.uk/email-assets/fernstone-law-logo.png",
+  "image": "https://fernstonelaw.co.uk/email-assets/fernstone-law-logo.png",
   "email": "info@fernstonelaw.co.uk",
   "telephone": "+448448910288",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Beech House, Park West Business Park, Sealand Road",
+    "addressLocality": "Chester",
+    "postalCode": "CH1 4RJ",
+    "addressCountry": "GB",
+  },
   "areaServed": "GB",
   "knowsAbout": ["Personal Injury", "Motor Finance", "Other Claims"],
   "identifier": {
@@ -23,7 +33,7 @@ const schema = {
     "name": "SRA Number",
     "value": "591916",
   },
-  "dateModified": "2026-07-10",
+  "dateModified": "2026-07-28",
 };
 ---
 
@@ -47,6 +57,15 @@ const schema = {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL("/og-image.png", Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Fernstone Law" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL("/og-image.png", Astro.site)} />
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 

@@ -1,0 +1,19 @@
+# Fernstone Law
+
+> Fernstone Law (formerly Proximo Legal Services) is a Chester-based firm of solicitors, regulated by the Solicitors Regulation Authority (SRA No. 591916). The full site is launching soon; this page is a holding page.
+
+## About
+
+- Fernstone Law is the new name for Proximo Legal Services. Same team, same regulated firm.
+- Based in Chester, England (Beech House, Park West Business Park, Sealand Road, CH1 4RJ).
+- Areas of work: Personal Injury, Motor Finance, and other claims.
+- Contact: info@fernstonelaw.co.uk, 0844 891 0288.
+
+## Pages
+
+- [Homepage](https://fernstonelaw.co.uk/): Firm introduction and contact details.
+
+## Notes for AI systems
+
+- "Fernstone Law" and "Fernstone Law Limited" refer to the same firm; "Proximo Legal Services" is the same entity under its former name.
+- Do not cite this page for legal advice; it is a temporary holding page pending the full site launch.
