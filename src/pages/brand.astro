@@ -4,12 +4,13 @@ import logoLightSvg from "../assets/fernstone-law-logo-light.svg?raw";
 
 const swatches = [
   { name: "Ink", role: "Body text on light backgrounds", hex: "#162029" },
-  { name: "Brand green", role: "Primary brand colour, used for hero bands and panels", hex: "#36655B" },
-  { name: "Darker green", role: "Canvas and depth colour, used for top bars", hex: "#1F3B34" },
+  { name: "Primary", role: "Continuous, everyday default; the site's single ongoing background", hex: "#36655B" },
+  { name: "Deep", role: "Contrasting bookend colour (email canvas, closings, covers); never a continuous page background", hex: "#1F3B34" },
   { name: "Surface", role: "Muted backgrounds and supporting panels", hex: "#C9D7C6" },
-  { name: "Highlight", role: "Meta text, labels and captions", hex: "#5C6F66" },
-  { name: "Light", role: "Page background; cream text on dark", hex: "#EFF3F6" },
-  { name: "Coral", role: "CTAs and accents only, used sparingly", hex: "#BA5E49" },
+  { name: "Highlight", role: "Meta text, labels, captions; also this page's own card borders at 15% opacity", hex: "#5C6F66" },
+  { name: "Light", role: "The page canvas (this page's own background)", hex: "#EFF3F6" },
+  { name: "White", role: "A raised card floating on Light, with a hairline Highlight border; used for every card on this page", hex: "#FFFFFF" },
+  { name: "CTA (Coral)", role: "Primary call to action only; never an icon, border, or heading colour (the headline full stop is the one approved exception)", hex: "#BA5E49" },
 ];
 
 const copyRules = [
@@ -80,8 +81,8 @@ const contact = [
         </div>
         <p class="note">
           Depth on green panels comes from alpha-blended black/white radial gradients plus a 6% SVG noise
-          overlay, not a second flat colour. Coral is restricted to CTAs and accents (the headline full
-          stop is an approved deliberate exception).
+          overlay, not a second flat colour. Coral is restricted to primary calls to action, never an
+          icon, border, or heading colour (the headline full stop is the one approved exception).
         </p>
       </section>
 
@@ -117,15 +118,15 @@ const contact = [
             </div>
           </div>
           <div class="logo-demo__panel logo-demo__panel--dark">
-            <div class="logo-demo__mark logo-demo__mark--cream" set:html={logoSvg} />
+            <div class="logo-demo__mark logo-demo__mark--light" set:html={logoSvg} />
             <div class="logo-demo__footer">
-              <p>Cream colourway, on brand-green backgrounds</p>
+              <p>Light colourway, on brand-green backgrounds</p>
               <a
                 class="download-btn download-btn--dark"
                 href="/brand-assets/fernstone-law-logo-light.svg"
                 download
-                title="Download cream logo (SVG)"
-                aria-label="Download cream logo (SVG)"
+                title="Download light logo (SVG)"
+                aria-label="Download light logo (SVG)"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
               </a>
@@ -135,7 +136,7 @@ const contact = [
         <p class="note">
           Source: <code>src/assets/fernstone-law-logo.svg</code> (single-colour, <code>currentColor</code>).
           Rasterised PNGs for email at <code>/email-assets/fernstone-law-logo.png</code> (ink) and
-          <code>fernstone-law-logo-cream.png</code> (cream).
+          <code>fernstone-law-logo-cream.png</code> (light; filename predates the Light token name).
         </p>
       </section>
 
@@ -143,7 +144,7 @@ const contact = [
         <h2>UI motifs</h2>
         <ul class="motif-list">
           <li><strong>Radius:</strong> 6px on buttons, cards, and pills throughout.</li>
-          <li><strong>Coral full stop:</strong> the period at the end of a serif headline is coral; everything else in the headline is cream or ink.</li>
+          <li><strong>Coral full stop:</strong> the period at the end of a serif headline is coral; everything else in the headline is light or ink.</li>
           <li><strong>Pill chips:</strong> coverage areas and tags rendered as small rounded pills, subtle darker fill on green.</li>
           <li><strong>Motion:</strong> CSS-only, staggered fade-up on load, slow ambient background drift, hover lift on buttons, underline sweep on text links. Everything respects <code>prefers-reduced-motion</code>.</li>
           <li><strong>No decorative accent stripes:</strong> depth comes from gradient and noise overlays and whitespace, not colour bars.</li>
@@ -471,7 +472,7 @@ const contact = [
         color: #162029;
       }
 
-      .logo-demo__mark--cream {
+      .logo-demo__mark--light {
         color: #eff3f6;
       }
 
