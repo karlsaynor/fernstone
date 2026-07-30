@@ -103,11 +103,33 @@ const contact = [
         <div class="logo-demo">
           <div class="logo-demo__panel logo-demo__panel--light">
             <div class="logo-demo__mark logo-demo__mark--ink" set:html={logoSvg} />
-            <p>Ink colourway, on light backgrounds</p>
+            <div class="logo-demo__footer">
+              <p>Ink colourway, on light backgrounds</p>
+              <a
+                class="download-btn download-btn--light"
+                href="/brand-assets/fernstone-law-logo-ink.svg"
+                download
+                title="Download ink logo (SVG)"
+                aria-label="Download ink logo (SVG)"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              </a>
+            </div>
           </div>
           <div class="logo-demo__panel logo-demo__panel--dark">
             <div class="logo-demo__mark logo-demo__mark--cream" set:html={logoSvg} />
-            <p>Cream colourway, on brand-green backgrounds</p>
+            <div class="logo-demo__footer">
+              <p>Cream colourway, on brand-green backgrounds</p>
+              <a
+                class="download-btn download-btn--dark"
+                href="/brand-assets/fernstone-law-logo-light.svg"
+                download
+                title="Download cream logo (SVG)"
+                aria-label="Download cream logo (SVG)"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              </a>
+            </div>
           </div>
         </div>
         <p class="note">
@@ -383,6 +405,14 @@ const contact = [
         background-size: 200px 200px;
       }
 
+      .logo-demo__footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
       .logo-demo__panel p {
         margin: 0;
         font-size: 16px;
@@ -394,6 +424,37 @@ const contact = [
 
       .logo-demo__panel--dark p {
         color: rgba(239, 243, 246, 0.72);
+      }
+
+      .download-btn {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .download-btn--light {
+        background: #c9d7c6;
+        color: #36655b;
+      }
+
+      .download-btn--light:hover {
+        background: #36655b;
+        color: #eff3f6;
+      }
+
+      .download-btn--dark {
+        background: rgba(255, 255, 255, 0.14);
+        color: #eff3f6;
+      }
+
+      .download-btn--dark:hover {
+        background: rgba(255, 255, 255, 0.26);
       }
 
       .logo-demo__mark {
